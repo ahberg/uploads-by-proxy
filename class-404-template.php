@@ -22,14 +22,13 @@ class UBP_404_Template {
 	 * Stream files from publicly registered IP address through PHP
 	 */
 	public function stream() {
-		require dirname(__FILE__).'/class-get-public-ip.php';
 
-		$ip = new UBP_Get_Public_IP( $this->get_domain() );
+		$domain =  $this->get_domain() ;
 
 		// Send domain name in request headers so vhosts resolve
 		$args = array( 'headers' => array( 'Host' => $this->get_domain() ) );
 		// Route around local DNS by requesting by IP directly
-		$url = 'http://' . $this->get_auth() . $ip . $this->get_remote_path();
+		$url = 'http://' . $this->get_auth() . $domain . $this->get_remote_path();
 
 		$this->response = wp_remote_get( $url, $args);
 

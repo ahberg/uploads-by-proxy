@@ -1,7 +1,7 @@
 <?php
 
 class UBP_Helpers {
-
+	
 	/**
 	 * Only load required files on the 404_template hook
 	 */
