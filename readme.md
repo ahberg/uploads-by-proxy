@@ -1,4 +1,4 @@
-# Wordpress plugin Uploads by proxy
+# WordPress plugin Uploads by proxy
 
 New release based on the orginal [Uploads by proxyby](https://github.com/pdclark/uploads-by-proxy).
 
