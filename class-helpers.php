@@ -13,25 +13,8 @@ class UBP_Helpers {
 	}
 
 	public static function requirements_check() {
-		add_action( 'admin_init', 'UBP_Helpers::require_no_multisite', 11 );
 		add_action( 'admin_notices', 'UBP_Helpers::request_uploads_writable' );
 		add_action( 'admin_footer', 'UBP_Helpers::request_permalinks_enabled' );
-	}
-
-	/**
-	 * Require single-site install before activating.
-	 */
-	public static function require_no_multisite() {
-		if ( function_exists( 'is_multisite' ) && ! is_multisite() ) {
-			return true; }
-
-		if ( is_admin() && ( ! defined( 'DOING_AJAX' ) || ! DOING_AJAX ) ) {
-			require_once ABSPATH . '/wp-admin/includes/plugin.php';
-			deactivate_plugins( UBP_PLUGIN_FILE );
-			wp_die( __( 'Uploads by Proxy is not yet compatible with network installs. The plugin has now disabled itself. Please activate on single-site installs only.', 'uploads-by-proxy' ) );
-		}
-
-		return false;
 	}
 
 	/**
