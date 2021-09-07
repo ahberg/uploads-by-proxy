@@ -1,9 +1,8 @@
 <?php
 /*
 Plugin Name: Uploads by Proxy
-Plugin URI: http://github.com/pdclark/uploads-by-proxy
-Author: Paul Clark
-Author URI: http://profiles.wordpress.org/pdclark
+Plugin URI: https://github.com/ahberg/uploads-by-proxy
+Author: ah-berg
 Description: Load images from production site if missing in development environment. Activate by using either <code>define('WP_SITEURL', 'http://development-domain.com');</code> or <code>define('UBP_SITEURL', 'http://live-domain.com/wordpress');</code> in wp-config.php.
 Version: 2.0
 */
