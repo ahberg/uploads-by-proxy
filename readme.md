@@ -1,10 +1,12 @@
-# Uploads by proxy
+# Wordpress plugin Uploads by proxy
 
-## Description 
+New release based on the origin Uploads by proxyby.
+
+## Description
 
 This plugin is meant to be used by developers who work on sites in a local development environment before deploying changes to a production (live) server. It allows you skip downloading the contents of `wp-content/uploads` to your local WordPress install. Instead, images missing from the uploads directory are loaded from the production server as needed.
 
-## Setup 
+## Setup
 
 In most cases, you should be able to activate the plugin and go. If the plugin does not work automatically, then you need to set the address of your live WordPress install in `wp-config.php`, like this:
 
@@ -57,3 +59,9 @@ If you want to run the plugin on a staging server, or have some other situation 
 
 It asks one of several remote servers what *it* thinks the IP address of your production domain is, then uses that IP to request the missing image. The correct domain name is sent in headers so that virtualhosts resolve.
 
+## Changelog
+
+### 2.0
+
+* Fix: Removed support for domain to ip service.
+* Fix: Possible to enable on mutlisite installs.
