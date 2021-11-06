@@ -23,7 +23,17 @@ class UBP_404_Template {
 	 * Stream files from publicly registered IP address through PHP
 	 */
 	public function stream() {
-
+		if ( defined( 'UBP_REDIRECT' ) && UBP_REDIRECT == true ) {
+			$redirect_url = UBP_SITEURL . $this->get_remote_path();
+			if ( defined( 'UBP_REPLACE' ) ) {
+				foreach ( UBP_REPLACE as $search => $replace ) {
+					$redirect_url = str_replace( $search, $replace, $redirect_url );
+				}
+			}
+			wp_redirect( $redirect_url, 302 ); // 302 as files _can_ change
+			exit;
+		}
+		
 		$domain = $this->get_domain();
 
 		// Send domain name in request headers so vhosts resolve
