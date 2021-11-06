@@ -25,8 +25,8 @@ if ( ! defined( 'UBP_IS_LOCAL' ) ) {
 	define(
 		'UBP_IS_LOCAL',
 		(
-		( '127.0.0.1' == $_SERVER['SERVER_ADDR'] && '127.0.0.1' == $_SERVER['REMOTE_ADDR'] ) // IPv4
-		|| ( '::1' == $_SERVER['SERVER_ADDR'] && '::1' == $_SERVER['REMOTE_ADDR'] ) // IPv6
+		( isset( $_SERVER['SERVER_ADDR'] ) && '127.0.0.1' == $_SERVER['SERVER_ADDR'] && isset( $_SERVER['REMOTE_ADDR'] ) && '127.0.0.1' == $_SERVER['REMOTE_ADDR'] ) // IPv4
+		|| ( isset( $_SERVER['SERVER_ADDR'] ) && '::1' == $_SERVER['SERVER_ADDR'] && isset( $_SERVER['REMOTE_ADDR'] ) && '::1' == $_SERVER['REMOTE_ADDR'] ) // IPv6
 		)
 	);
 }
