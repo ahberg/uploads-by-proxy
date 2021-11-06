@@ -4,16 +4,18 @@ New release based on the orginal [Uploads by proxy](https://github.com/pdclark/u
 
 ## Description
 
-This plugin is meant to be used by developers who work on sites in a local development environment before deploying changes to a production (live) server. It allows you skip downloading the contents of `wp-content/uploads` to your local WordPress install. Instead, images missing from the uploads directory are loaded from the production server as needed.
+This plugin is meant to be used by developers who work on sites in a local development environment before deploying changes to a production (live) server. It allows you skip downloading the contents of `wp-content/uploads` to your local WordPress install. Instead, images missing from the uploads directory are loaded from the production server as needed. You have the option to download the files or to redirect to the original url.
 
 ## Setup
 
-In most cases, you should be able to activate the plugin and go. If the plugin does not work automatically, then you need to set the address of your live WordPress install in `wp-config.php`, like this:
-
-     define('UBP_SITEURL', 'http://example-live.com/wordpress');
+In wp-config.php
+`define('UBP_SITEURL', 'http://example-live.com/wordpress');`
+To define a 302 redirect to the original URL instead of downloading.
+`define('UBP_REDIRECT', true);`
+If you need you can also add a search-replace.
+`define('UBP_REPLACE', [ '/app' => '/wp-content' ] );`
 
 If you are on a staging server (not a local development environment) you may need to force the plugin to run with `define( 'UBP_IS_LOCAL', true );` in `wp-config.php`. Do not set this on a live site!
-
 
 ## Installation
 
@@ -35,7 +37,7 @@ Maybe you work on a site with gigabytes of images in the uploads directory, or m
 
 "Development" refers to a version of your site that is in a protected area only accessible to you. Programs like [MAMP](http://www.mamp.info), [WAMP](http://www.wampserver.com/), and [XAMPP](http://www.apachefriends.org/en/xampp.html) allow you run a copy of your WordPress site in a way that is only accessible from your computer. This allows you to work on a copy and test changes without effecting the live site until you are ready to deploy your changes.
 
-### An image changed on my live server, but it didn't update locally.
+### An image changed on my live server, but it didn't update locally
 
 This plugin only goes into action when an image is missing on your local copy. When it runs, it copies the file into your local wp-content/uploads folder and doesn't run again. If you'd like to update an image with the production copy again, delete your local copy.
 
@@ -47,7 +49,7 @@ Nothing. The plugin only takes action if it detects it is on a local development
 
 The plugin only loads if the server address and browser address are both `127.0.0.1`. This should catch most local environments, such as MAMP, WAMP, and XAMPP.
 
-If your local domain is the same as the remote domain, and automatic IP detection doesn't work, use the <code>ubp_remote_ip</code> filter to set IP address programatticaly. 
+If your local domain is the same as the remote domain, and automatic IP detection doesn't work, use the <code>ubp_remote_ip</code> filter to set IP address programatticaly.
 
 Example: <code>add_filter( 'ubp_remote_ip', function(){ return '12.34.56.789'; } );</code>
 
