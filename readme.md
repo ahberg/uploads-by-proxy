@@ -63,6 +63,10 @@ It asks one of several remote servers what *it* thinks the IP address of your pr
 
 ## Changelog
 
+### 2.1
+
+* Add: Support for redirect instead of download. Thanks to [@ramonfincken](https://github.com/ramonfincken/uploads-by-proxy).
+
 ### 2.0
 
 * Fix: Removed support for domain to ip service.
