@@ -33,7 +33,7 @@ class UBP_404_Template {
 			wp_redirect( $redirect_url, 302 ); // 302 as files _can_ change
 			exit;
 		}
-		
+
 		$domain = $this->get_domain();
 
 		// Send domain name in request headers so vhosts resolve
@@ -44,11 +44,11 @@ class UBP_404_Template {
 		$this->response = wp_remote_get( $url, $args );
 
 		if ( ! is_wp_error( $this->response ) && 200 == $this->response['response']['code'] ) {
-			$this->download();
+			$this->save_file();
 		}
 	}
 
-	public function download() {
+	public function save_file() {
 		if ( ! function_exists( 'WP_Filesystem' ) ) {
 			require ABSPATH . 'wp-admin/includes/file.php'; }
 		global $wp_filesystem;
